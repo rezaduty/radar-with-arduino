@@ -1,0 +1,521 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>آردوینو</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <!-- <link rel="stylesheet" href="css/theme/black.css"> -->
+    <link rel="stylesheet" href="css/theme/night.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!-- QR Codes -->
+    <script type="text/javascript" src="qrcodejs/qrcode.js"></script>
+
+    <!-- Manual style tweaks -->
+    <style>
+        /* Columns */
+        /* ref: https://stackoverflow.com/questions/30861845/how-to-use-two-column-layout-with-reveal-js#answer-44392145 */
+        
+        .reveal h1,
+        .reveal h2,
+        .reveal h3,
+        .reveal h4,
+        .reveal h5,
+        .reveal h6 {
+            margin: 0 0 20px 0;
+            font-family: "mitra", sans-serif;
+            line-height: 0.9em;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            text-shadow: none;
+        }
+        
+        .columns {
+            display: flex;
+        }
+        
+        .col {
+            flex: 1;
+        }
+        /* Colours */
+        
+        .text-red {
+            color: #f00;
+        }
+        
+        .text-green {
+            color: #0f0;
+        }
+        
+        .text-yellow {
+            color: #ff0;
+        }
+        
+        .text-blue {
+            color: #0077BB;
+        }
+        /* External Link */
+        
+        .prj-link {
+            font-family: monospace !important;
+            font-size: 0.7em !important;
+        }
+        
+        .prj-link::before {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            margin-right: 0.1em;
+            margin-left: 0.1em;
+            content: "";
+            background: url("images/micro-sd-card.png") no-repeat 0 0;
+            background-size: 100%;
+            vertical-align: middle;
+        }
+        /* QR Code */
+        
+        .qrcode {
+            background-color: #fff;
+            padding: 1px 1px 1px 1px;
+            display: inline-block;
+        }
+        
+        .half-size {
+            font-size: 0.5em !important;
+        }
+        .ulli a{
+            font-family: "mitra", sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- =================== INTRODUCTION =================== -->
+            <section>
+                <section>
+                    <h2>آردوینو</h2>
+                    <h3>پروژه رادار</h3>
+                    <div class="stretch">
+                        <img class="plain" src="images/logo/arduino_logo.png" />
+                        <img class="plain" src="images/Arduino-Radar04.jpg" style="width:20%;" />
+                    </div>
+
+                    <!-- Side notes shown when pressing 's' -->
+                    <aside data-markdown class="notes">
+                       Radar
+
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>عناوین</h2>
+                    <div class="columns">
+                        
+                        <div class="col">
+                            <ul class="ulli" style="font-size:0.9em">
+                                <li><a href="#/what_is_micro">میکروکنترلر چیست؟</a></li>
+                                <li><a href="#/type_of_microcontroller">انواع میکروکنترلر</a></li>
+                                <li><a href="#/micproc_vs_miccon">تفاوت میکروکنترلر با میکروپروسسور</a></li>
+                                <li><a href="#/applied_miccon">کاربرد های میکروکنترلر</a></li>
+                                <li><a href="#/what_is_arduino">آردوینو چیست؟</a></li>
+                                <li><a href="#/installation">محیط توسعه و زبان برنامه نوسی</a></li>
+                                <li><a href="#/radar-project">پروژه رادار</a></li>
+                                <li><a href="#/other-project">پروژه های کاربردی دیگر</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <!-- =================== WHAT IS Microcontroller =================== -->
+            <section id="what_is_micro">
+                <section data-background="#005D97">
+                    <h1 style="font-size: 3.5em">میکروکنترلر چیست؟</h1>
+                </section>
+
+                <section>
+                    <h3>
+                        <a href="https://fa.wikipedia.org/"><img class="plain" src="images/logo/Wikipedia-logo-v2-fa.svg.png" style="vertical-align: middle;width:7%; margin-right:0.2em" />fa.wikipedia.org</a>
+                    </h3>
+                    <blockquote style="direction:rtl;">
+                        &ldquo; نوعی ریزپردازنده است که دارای حافظهٔ دسترسی تصادفی (RAM) و حافظهٔ فقط خواندنی (ROM)، تایمر، پورت‌های ورودی و خروجی (I/O) و درگاه ترتیبی (Serial Port پورت سریال) در درون خود تراشه می‌باشد و می‌تواند به تنهایی بر روی ابزارهای دیگری کنترل اعمال کند.&rdquo;
+                    </blockquote>
+                </section>
+            </section>
+
+            <!-- =================== Type of MicroController =================== -->
+            <section id="type_of_microcontroller">
+                <section data-background="#005D97">
+                    <h1 style="font-size: 3.5em">میکروکنترلرهای رایج</h1>
+                </section>
+
+                <section>
+                    <h3>
+                        میکروکنترلرهای رایج
+                    </h3>
+                    <span class="fragment">Atmel</span>
+                    <span class="fragment">=>Avr=>8051 Family</span><br>
+                    <span class="fragment">Microchip</span>
+                    <span class="fragment">=>PIC,dsPIC</span><br>
+                    <span class="fragment">Arm</span>
+
+                </section>
+            </section>
+
+
+            <!-- =================== diffrent microproccero with microcontroller =================== -->
+            <section id="micproc_vs_miccon">
+                <section data-background="#005D97">
+                    <h1>تفاوت میکروکنترلر با میکروپروسسور</h1>
+                </section>
+
+                <section>
+                    <h5>تفاوت میکروکنترلر با میکروپروسسور</h5>
+                    <div class="columns">
+
+                        <div class="col">
+                            <img class="plain" src="images/Microcontroller-vs-Micropro.jpg" />
+                        </div>
+                        <div class="col">
+                            <img class="plain" src="images/Microcontroller-Microprocessor.png" />
+                        </div>
+                    </div>
+                </section>
+
+
+
+
+
+            </section>
+
+
+            <!-- ===================  microcontroller applied =================== -->
+            <section id="applied_miccon">
+                <section data-background="#005D97">
+                    <h1>کاربرد میکروکنترلر ها</h1>
+                </section>
+
+                <section>
+                    <h5>کاربرد میکروکنترلر ها</h5>
+                    <div class="columns">
+
+                        <div class="col">
+                            <h6>میكروكنترلرها به طور گستردهای در تولید سیستمهای تك منظوره به كار می روند. منظور از سیستم تك منظوره سیستمی است كه از میكروكنترلر یا میكرپروسسور فقط برای یك كار استفاده می كند</h6>
+                        </div>
+                        <div class="col">
+                            <img class="plain" src="images/gsm-based-home-security-system-project-using-microcontroller-8051.jpg" />
+                        </div>
+                    </div>
+                </section>
+
+            </section>
+            <!-- ===================  what is arduino =================== -->
+            <section id="what_is_arduino">
+                <section data-background="#005D97">
+                    <h1>آردوینو چیست؟</h1>
+                </section>
+
+                <section>
+                    <h5>آردوینو چیست؟</h5>
+                    <div class="columns">
+
+                        <div class="col">
+                            <h6>آردوینو ابزاری است برای تولید کامپیوترهایی که نسبت به کامپیوتر شخصی شما، مقدار بیشتری از دنیای فیزیکی را احساس و کنترل می کنند. این ابزار، یک پلت فرم محاسباتی فیزیکی open-source است که بر اساس یک برد میکروکنترلر ساده تهیه شده،
+                                و نیز یک محیط توسعه برای نوشتن نرم افزار جهت کار با برد می باشد.</h6>
+                        </div>
+                        <div class="col">
+                            <img style="width:62%;" class="plain" src="images/220px-Arduino_Uno_-_R3.jpg" />
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h5>چرا آردوینو؟</h5>
+                    <h6 style="float:right;direction:rtl;" class="fragment">◄ارزان</h6><br>
+                    <h6 style="float:right;direction:rtl;" class="fragment">◄مستقل از سیستم عامل (Cross-platform)</h6>
+                    <h6 style="float:right;direction:rtl;" class="fragment">◄محیط برنامه نویسی شفاف و ساده</h6><br>
+                    <h6 style="float:right;direction:rtl;" class="fragment">◄نرم افزار قابل توسعه و open-source</h6><br>
+                    <h6 style="float:right;direction:rtl;" class="fragment">◄سخت افزار قابل توسعه و open-source</h6><br>
+
+                </section>
+
+                <section>
+                    <h5>انواع برد های آردوینو</h5>
+                    <img style="width:28%;" class="plain" src="images/IMG_1902.jpg" />
+                    <img style="width:28%;" class="plain" src="images/1024px-Arduino_Mega.jpg" />
+                    <img style="width:28%;" class="plain" src="images/220px-Arduino_Uno_-_R3.jpg" />
+
+
+                </section>
+
+
+            </section>
+
+            <!-- ===================  Prerequisite =================== -->
+            <section id="prerequisite">
+                <section data-background="#005D97">
+                    <h1>شیلد ها و سنسور های آردوینو</h1>
+                </section>
+
+                <section>
+                    <h5 style="direction:rtl;"> شیلدهای آردوینو</h5>
+                    <img style="width:62%;" class="plain" src="images/what-is-arduino-shields.jpg" />
+                    <h6 style="direction:rtl;">
+                        با استفاده از آردوینو و به کمک شیلدهای متنوعی که برای آردوینو ساخته شده به سادگی می‌توانید پروژه‌های اینترنت اشیا را پیاده‌سازی کنید. بردهای آردوینو را بدون نیاز به پروگرامر می‌توان از طریق کابل USB و IDE اوپن سورس آردوینو پروگرام کرد.
+                    </h6>
+                </section>
+                <section>
+                    <h5 style="direction:rtl;">
+                        سنسور های آردوینو
+                    </h5>
+                    <img style="width:28%;" class="plain" src="images/hc_sr04_Ultrasonic Sensor.jpg" />
+                    <img style="width:28%;" class="plain" src="images/pulse-sensor-heart-rate-arduino-compatible-deanwong-1411-11-deanwong@2.jpg" />
+                    <img style="width:28%;" class="plain" src="images/Zeus_fingerPrint.jpg" />
+
+
+
+                </section>
+
+            </section>
+
+
+            <!-- ===================  installation =================== -->
+            <section id="installation">
+                <section data-background="#005D97">
+                    <h1>محیط توسعه و زبان برنامه نویسی</h1>
+                </section>
+
+                <section>
+                    <h5 style="direction:rtl;">محیط توسعه</h5>
+                    <img style="width:62%;" class="plain" src="images/ArduinoSoftware.png" />
+
+                </section>
+                <section>
+                    <h5 style="direction:rtl;">
+                        زبان برنامه نویسی
+                    </h5>
+
+                    <img style="width:62%;" class="plain" src="images/C.png" />
+
+
+                </section>
+
+            </section>
+
+
+
+
+
+
+<!-- ===================  radar project =================== -->
+            <section id="rada-project">
+                <section data-background="#005D97">
+                    <h1>پروژه رادار</h1>
+                </section>
+
+                <section>
+                    <h5 style="direction:rtl;">موارد مورد نیاز</h5>
+                    <img style="width:46%;" class="plain" src="images/tools.png" />
+
+                </section>
+                <section>
+                    <h5 style="direction:rtl;">
+                       شماتیک مدار
+                    </h5>
+
+                   <img style="width:46%;" class="plain" src="images/schema.png" />
+
+
+                </section>
+
+               
+                <section>
+                    <img style="width:25%;" class="plain" src="images/processing.png" />
+                    <h5 style="direction:rtl;">
+                         Processing is an open source computer programming language and integrated development environment (IDE) built for the electronic arts, new media art, and visual design communities with the purpose of teaching the fundamentals of computer programming in a visual context, and to serve as the foundation for electronic sketchbooks.
+                    </h5>
+                    
+                    
+
+
+                </section>
+
+            </section>
+
+
+
+
+            <!-- ===================  other project =================== -->
+            <section id="other-project">
+                <section data-background="#005D97">
+                    <h1>دیگر پروژه ها</h1>
+                </section>
+
+                <section>
+                    <h5 style="direction:rtl;">instructables.com</h5>
+                    <img style="width:46%;" class="plain" src="images/logo/FZF9H1RFD80X5P3.LARGE.gif" />
+
+                </section>
+                <section>
+                    <h5 style="direction:rtl;">
+                        نمونه ها
+                    </h5>
+
+                    <img style="width:52%;" class="plain" src="images/FB8OHIGHJ6053CU.MEDIUM.jpg" />
+                    <img style="width:46%;" class="plain" src="images/diy_sec_camera.png" />
+
+
+
+
+                </section>
+                <section>
+                    <h5 style="direction:rtl;">
+                        نمونه ها
+                    </h5>
+                    <img style="width:49%;" class="plain" src="images/FSEK97QGIJG3L4Q.MEDIUM.jpg" />
+                    <img style="width:47%;" class="plain" src="images/FNKMVWMH5TUCEFJ.MEDIUM.jpg" />
+
+
+
+
+                </section>
+
+            </section>
+
+
+
+
+            <!-- =================== END =================== -->
+            <section data-background="#000000">
+                <section>
+                    <h2>منابع</h2>
+                    <pre><code class="hljs" data-trim contenteditable>
+                            #avr-tutorials.com
+                            #circuitdigest.com
+                            #c.76.my
+                            #ahwazhobby.ir
+                            #sisoog.com
+                            #diginic.net
+                            #cdn-blog.adafruit.com
+                            #etutorshelp.com
+                            #wikipedia.org
+                            #http://www.instructables.com/id/Arduino-RadarUltrasonic-Detector/
+                            #howtomechatronics.com
+                        </code></pre>
+                </section>
+                <section>
+                    <h2>با تشکر</h2>
+                    <div class="columns">
+                        <div class="col">
+                            <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" />
+                            <div class="half-size">
+                                <a href="https://github.com/rezaduty/radar-with-adruino">گیت هاب</a>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <br/><br/>
+                            <p style="direction:rtl;">
+                                گردآوری توسط <a title="Visit me on Github" href="https://github.com/rezaduty">rezaduty</a>
+                            </p>
+                            <p style="direction:rtl;">
+                                ساخته شده با <a title="reveal.js" href="https://github.com/hakimel/reveal.js">reveal.js</a>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </div>
+
+    <!-- QR Codes -->
+    <script type="text/javascript">
+        // Get presentation URL
+        var qrcode_url = "https://fragmuffin.github.io/howto-micropython";
+        if (!/^(localhost|127\.0\.1\.1|)$/.test(location.hostname)) {
+            // host is not localhost, get dynamic URL
+            //keep it simple
+            //qrcode_url = window.location.href;
+            console.log("host is not local, dynamic url: " + window.location.href);
+        }
+
+        // Generate QR Codes : class="qrcode"
+        var qrcode_elements = document.getElementsByClassName('qrcode');
+        for (var i = 0; i < qrcode_elements.length; i++) {
+            var qrcode_el = qrcode_elements[i];
+
+            var qrcode = new QRCode(qrcode_el, {
+                text: qrcode_url,
+                width: 350,
+                height: 350
+            });
+
+            // Alter generated image
+            var img_el = qrcode._el.childNodes[1];
+            img_el.classList.add("plain"); // remove border
+        }
+
+        // Add text to links : class="qrcode-link"
+        var qrcode_link_elements = document.getElementsByClassName('qrcode-link');
+        for (var i = 0; i < qrcode_link_elements.length; i++) {
+            var link_el = qrcode_link_elements[i];
+            link_el.textContent = qrcode_url;
+            link_el.href = qrcode_url;
+        }
+    </script>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+        // More info about config & dependencies:
+        // - https://github.com/hakimel/reveal.js#configuration
+        // - https://github.com/hakimel/reveal.js#dependencies
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            slideNumber: true,
+            slideNumber: 'c/t',
+            center: true,
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+            dependencies: [{
+                src: 'plugin/markdown/marked.js'
+            }, {
+                src: 'plugin/markdown/markdown.js'
+            }, {
+                src: 'plugin/notes/notes.js',
+                async: true
+            }, {
+                src: 'plugin/zoom-js/zoom.js',
+                async: true
+            }, {
+                src: 'plugin/highlight/highlight.js',
+                async: true,
+                callback: function() {
+                    hljs.initHighlightingOnLoad();
+                }
+            }]
+        });
+    </script>
+
+</body>
+
+</html>
